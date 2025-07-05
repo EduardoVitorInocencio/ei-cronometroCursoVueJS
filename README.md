@@ -1,7 +1,3 @@
-Perfeito! Aqui está a documentação completa e exata do seu código, já incluindo instruções para clonar o repositório e executar o projeto localmente.
-
----
-
 # Documentação do Projeto Cronômetro (Estudos sobre Vue.Js)
 
 ---
