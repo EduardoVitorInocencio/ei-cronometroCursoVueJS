@@ -24,6 +24,12 @@
     </button>
     </div>
 
+    <div class="list" v-show="historico.length > 0">
+      <ul >
+        <li v-for="item in historico">Você fez uma pausa em {{ item }}</li>
+      </ul>
+    </div>
+
   </div>
 </template>
 
@@ -37,7 +43,8 @@
         botao: "GO",
         time: 0,
         crono: null,
-        run: false
+        run: false,
+        historico:[]
       }
     },
     computed: {
@@ -64,6 +71,9 @@
 
             this.botao = "GO";
             this.run = false;
+            // Adiciona o tempo atual ao histórico
+            this.historico.push(this.tempoFormatado);
+
             // Para o cronômetro
             clearInterval(this.crono);
             this.crono = null;
@@ -75,7 +85,10 @@
           this.botao = "GO";
           this.run = false;
           clearInterval(this.crono);
-        }
+          this.historico = [];
+          this.crono = null;
+        },
+
     }
   };
 
@@ -151,6 +164,25 @@
 
   #btnClear:hover{
     background-color: #c62828;
+  }
+
+  .list{
+    margin-top: 20px;
+    width:50%;
+    display: flex;
+    justify-content: center;
+  }
+  .list ul{
+    list-style: none;
+    padding: 0;
+  }
+  .list li{
+    font-size: 20px;
+    font-weight: 200;
+    color: #d1d1d1;
+    margin: 10px 0;
+    font-family: 'Courier New', Courier, monospace;
+    border-bottom: #f1f1f1 1px solid;
   }
 
 </style>
